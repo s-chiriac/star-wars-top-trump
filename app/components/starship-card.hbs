@@ -1,0 +1,45 @@
+<div class="card border-dark starship-card">
+  <img class="card-img-top"
+       src="https://starwars-visualguide.com/assets/img/starships/{{@starship.id}}.jpg"
+       alt={{@starship.name}}>
+  <div class="card-body">
+    <h5 class="card-title mb-0">
+      {{@starship.name}}
+      {{#if @winner}}
+        <span class="badge badge-success float-right">Winner!</span>
+      {{/if}}
+    </h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      Crew:
+      <span class="font-weight-bold float-right">
+        {{#if @winner}}
+          <span class="badge badge-success">Winner!</span>
+        {{/if}}
+        {{localised-number @starship.crew}}
+      </span>
+    </li>
+    <li class="list-group-item">
+      Cargo capacity (kg): <span class="font-weight-bold float-right">{{localised-number @starship.cargoCapacity}}</span>
+    </li>
+    <li class="list-group-item">
+      Cost (credits): <span class="font-weight-bold float-right">{{localised-number @starship.costInCredits}}</span>
+    </li>
+    <li class="list-group-item">
+      Length (m): <span class="font-weight-bold float-right">{{localised-number @starship.length}}</span>
+    </li>
+    <li class="list-group-item">
+      Passengers: <span class="font-weight-bold float-right">{{localised-number @starship.passengers}}</span>
+    </li>
+    <li class="list-group-item">
+      Class: <span class="font-weight-bold float-right text-capitalize">{{@starship.starshipClass}}</span>
+    </li>
+    <li class="list-group-item">
+      Consumables: <span class="font-weight-bold float-right text-capitalize">{{@starship.consumables}}</span>
+    </li>
+    <li class="list-group-item">
+      Hyperdrive rating: <span class="font-weight-bold float-right text-capitalize">{{@starship.hyperdriveRating}}</span>
+    </li>
+  </ul>
+</div>

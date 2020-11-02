@@ -1,0 +1,42 @@
+<div class="card border-dark person-card">
+  <img class="card-img-top"
+       src="https://starwars-visualguide.com/assets/img/characters/{{@person.id}}.jpg"
+       alt={{@person.name}}>
+  <div class="card-body">
+    <h5 class="card-title mb-0">
+      {{@person.name}}
+      {{#if @winner}}
+        <span class="badge badge-success float-right">Winner!</span>
+      {{/if}}
+    </h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      Mass (kg):
+      <span class="font-weight-bold float-right">
+        {{#if @winner}}
+          <span class="badge badge-success">Winner!</span>
+        {{/if}}
+        {{@person.mass}}
+      </span>
+    </li>
+    <li class="list-group-item">
+      Height (cm): <span class="font-weight-bold float-right">{{@person.height}}</span>
+    </li>
+    <li class="list-group-item">
+      Birth year: <span class="font-weight-bold float-right">{{@person.birthYear}}</span>
+    </li>
+    <li class="list-group-item">
+      Gender: <span class="font-weight-bold float-right text-capitalize">{{@person.gender}}</span>
+    </li>
+    <li class="list-group-item">
+      Eye color: <span class="font-weight-bold float-right text-capitalize">{{@person.eyeColor}}</span>
+    </li>
+    <li class="list-group-item">
+      Hair color: <span class="font-weight-bold float-right text-capitalize">{{@person.hairColor}}</span>
+    </li>
+    <li class="list-group-item">
+      Skin color: <span class="font-weight-bold float-right text-capitalize">{{@person.skinColor}}</span>
+    </li>
+  </ul>
+</div>

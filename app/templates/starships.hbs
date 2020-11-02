@@ -1,0 +1,72 @@
+<h1 class="text-center">
+  {{#if (eq this.roundWinner "left")}}
+    Left wins!
+  {{else if (eq this.roundWinner "right")}}
+    Right wins!
+  {{else if (eq this.roundWinner "tie")}}
+    It's a tie!
+  {{/if}}
+</h1>
+
+<div class="cards d-flex justify-content-between my-4">
+  <div class="left-card">
+    <h2>Score: {{this.leftScore}}</h2>
+    <StarshipCard @starship={{this.leftStarship}} @winner={{eq this.roundWinner "left"}} />
+  </div>
+
+  <div class="right-card">
+    <h2>Score: {{this.rightScore}}</h2>
+    <StarshipCard @starship={{this.rightStarship}} @winner={{eq this.roundWinner "right"}} />
+  </div>
+</div>
+
+<div class="card text-white bg-primary border-primary">
+  <div class="card-body d-flex justify-content-between align-items-center">
+    <button type="button" class="btn btn-light" {{on "click" this.toggleMatchHistory}}>History</button>
+    <h3>Overall winner: <span class="text-uppercase">{{this.overallWinner}}</span></h3>
+    <button type="button" class="btn btn-light font-weight-bold" {{on "click" this.play}}>Play again!</button>
+  </div>
+</div>
+
+{{#if this.showMatchHistory}}
+  <div class="card border-primary mt-4">
+    <table class="table table-bordered mb-0">
+      <thead class="thead-light">
+        <tr class="text-uppercase">
+          <th>Left starship</th>
+          <th>Crew</th>
+          <th class="text-right">Score</th>
+          <th class="text-center">Winner</th>
+          <th>Score</th>
+          <th class="text-right">Crew</th>
+          <th class="text-right">Right starship</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each this.matchHistory as |entry|}}
+          <tr>
+            {{#if (eq entry.winner "left")}}
+              <td class="table-success">{{entry.left.starshipName}}</td>
+              <td class="table-success font-weight-bold">{{localised-number entry.left.crew}}</td>
+              <td class="table-success text-right">{{entry.left.totalScore}}</td>
+            {{else}}
+              <td class="table-light">{{entry.left.starshipName}}</td>
+              <td class="table-light font-weight-bold">{{localised-number entry.left.crew}}</td>
+              <td class="table-light text-right">{{entry.left.totalScore}}</td>
+            {{/if}}
+            <td class="table-light text-uppercase text-center font-weight-bold">{{entry.winner}}</td>
+            {{#if (eq entry.winner "right")}}
+              <td class="table-success">{{entry.right.totalScore}}</td>
+              <td class="table-success text-right font-weight-bold">{{localised-number entry.right.crew}}</td>
+              <td class="table-success text-right">{{entry.right.starshipName}}</td>
+            {{else}}
+              <td class="table-light">{{entry.right.totalScore}}</td>
+              <td class="table-light text-right font-weight-bold">{{localised-number entry.right.crew}}</td>
+              <td class="table-light text-right">{{entry.right.starshipName}}</td>
+            {{/if}}
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+{{/if}}

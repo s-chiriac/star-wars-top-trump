@@ -1,0 +1,46 @@
+@import "ember-bootstrap/bootstrap";
+
+body {
+  min-width: 60rem;
+  font-size: 16px;
+  background-color: #dddddd;
+}
+
+.content {
+  max-width: 56rem;
+}
+
+.cards {
+  .left-card,
+  .right-card {
+    flex-grow: 1;
+    max-width: 24rem;
+  }
+}
+
+img {
+  &:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 100%;
+    background-image: url('https://starwars-visualguide.com/assets/img/big-placeholder.jpg');
+    background-position: center;
+  }
+}
+
+.starship-card img {
+  height: 16rem;
+
+  &:before {
+    height: 16rem;
+  }
+}
+
+.person-card img {
+  height: 32rem;
+
+  &:before {
+    height: 32rem;
+  }
+}
