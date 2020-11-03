@@ -5,8 +5,8 @@ export default class PersonModel extends Model {
   @attr('string') birthYear;
   @attr('string') eyeColor;
   @attr('string') hairColor;
+  @attr('string') skinColor;
   @attr('string') gender;
   @attr('string') height;
   @attr('string') mass;
-  @attr('string') skinColor;
 }
